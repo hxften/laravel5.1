@@ -82,9 +82,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return 'Hello World';
-});
+});*/
 
 Route::post('foo/bar', function () {
     return 'Hello World';
@@ -99,14 +99,14 @@ Route::delete('foo/bar', function () {
 });
 
 //为多重动作注册路由
-Route::match(['get', 'post'], '/', function () {
+/*Route::match(['get', 'post'], '/', function () {
     return 'Hello World get post';
-});
+});*/
 
 //通过 any 方法来使用注册路由并响应所有的 HTTP 动作
-Route::any('foo', function () {
+/*Route::any('foo', function () {
     return 'Hello World';
-});
+});*/
 
 //路由参数
 Route::get('user/{id}', function ($id) {

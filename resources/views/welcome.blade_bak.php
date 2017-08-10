@@ -36,23 +36,10 @@
         </style>
     </head>
     <body>
-        <a href="/about-us">About Us</a>
         <div class="container">
-            <form action="/register" method="POST">
-                {{ csrf_field() }}
-
-                <div>
-                    Name: <input type="text" name="name">
-                </div>
-
-                <div>
-                    <input type="checkbox" value="yes" name="terms"> Accept Terms
-                </div>
-
-                <div>
-                    <input type="submit" value="Register">
-                </div>
-            </form>
+            <div class="content">
+                <div class="title">Laravel 5</div>
+            </div>
         </div>
     </body>
 </html>

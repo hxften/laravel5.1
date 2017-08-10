@@ -16,9 +16,9 @@ class UsersController extends Controller
      */
     public function getIndex(Request $req)
     {
-    	return 'getindex';exit;
+    	//return 'getindex';exit;
         $input = $req->all();
-        $title = $req->input('title');	
+        $title = $req->input('name');	
         return print_r($input, true);
     }
 
