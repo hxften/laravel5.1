@@ -16,6 +16,7 @@ class PhotosController extends Controller
      */
     public function index()
     {
+        // index
         return "photos/index";
     }
 
