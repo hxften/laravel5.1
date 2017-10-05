@@ -144,7 +144,8 @@ return [
         Horsefly\Providers\AuthServiceProvider::class,
         Horsefly\Providers\EventServiceProvider::class,
         Horsefly\Providers\RouteServiceProvider::class,
-
+        // 消息发送
+        Horsefly\Providers\CmsServiceProvider::class,
     ],
 
     /*
@@ -192,7 +193,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-
+        // 短信
+        'Cms' => Illuminate\Support\Facades\Cms::class,
     ],
 
 ];
