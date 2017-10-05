@@ -12,8 +12,8 @@ class CreateFlightsTable extends Migration
      */
     public function up()
     {
-        Schema::rename('flights' , 'newflights');
-        Schema::dropIfExists('flights');
+        //Schema::rename('flights' , 'newflights');
+        //Schema::dropIfExists('flights');
         Schema::create('flights', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             // 检查表
