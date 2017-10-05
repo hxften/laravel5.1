@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'Horsefly\Events\SomeEvent' => [
             'Horsefly\Listeners\EventListener',
         ],
+        'Horsefly\Events\TenEvent' => [
+            'Horsefly\Listeners\TenEventListener',
+        ],
     ];
 
     /**

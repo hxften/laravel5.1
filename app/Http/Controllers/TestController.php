@@ -6,14 +6,8 @@ use Illuminate\Http\Request;
 
 use Horsefly\Http\Requests;
 use Horsefly\Http\Controllers\Controller;
-use Horsefly\Jobs\CreateMessage;  
-use Horsefly\Jobs\SendUserEmail;
 
-use Horsefly\Jobs\SendCms;
-use Horsefly\Events\SomeEvent;
-
-
-class UserController extends Controller
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        // 服务 
-        //$cms = 'cms22';
-        //\Cms::send("hello cms");  // 关键行
-
-        //队列
-        $title = 'title';
-        \Queue::push(new SendCms($title));
+        //
+        echo 'index';
     }
 
     /**
@@ -39,6 +28,8 @@ class UserController extends Controller
     public function create()
     {
         //
+        echo 'create添加新建';
+
     }
 
     /**
@@ -50,11 +41,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        echo 'POST默认进入store';
     }
 
     /**
      * Display the specified resource.
-     * 这个方法我们用来模拟发送消息队列.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -62,16 +53,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        echo 'dd';
-
-
-        /*$datas = \DB::table('user')->where('status',1)->get();
-        foreach($datas as $data){
-            $job = (new SendUserEmail($data->name,$data->email));
-            print_r($job);exit;
-            $this->dispatch($job);
-        }
-        return redirect('/user');*/
+        echo 'show详情';
     }
 
     /**
@@ -82,12 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //http://dev.learn51.com/user/10/edit
-        //删除方法触发事件
-        $id = 1;
-        event(new SomeEvent($id)); // 关键行
-
-        return 'edit事件';
+        //
+        echo $id.'edit修改页面';
     }
 
     /**
@@ -99,7 +77,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        /**
+         *请求URL: /test/{id}  
+         *请求方式:PUT  
+         *PUT方法需要定义一个隐藏表单  
+         *<input type="hidden" name="_method" value="put"/>  
+         *默认进入控制器的方法:update($id) 
+         *一般用于:接收修改的方法
+         */
+        echo '接收修改方法';
     }
 
     /**
@@ -110,6 +96,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
+        //
+        echo 'destroy删除';
     }
+
 }
