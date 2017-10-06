@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('QUEUE_DRIVER', 'sync'),
+    'default' => env('QUEUE_DRIVER', 'database'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,8 @@ return [
         'redis' => [
             'driver'     => 'redis',
             'connection' => 'default',
-            'queue'      => 'default',
+            //'queue'      => 'default',
+            'queue'      => 'low',  //默认队列优先级为 low
             'expire'     => 60,
         ],
 

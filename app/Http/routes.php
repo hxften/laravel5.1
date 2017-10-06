@@ -28,7 +28,12 @@ Route::controller('/addTest','TestController'); */
 Route::resource('/user','UserController');  
 //事件
 Route::get('event', function()
-{return 'event';exit;
+{
     event(new SomeEvent(12)); // 关键行
     
 });
+
+//创建队列
+Route::resource('/cms','CmsController@sendCms');  
+//队列分发任务
+Route::resource('/podcast','PodcastController@store'); 

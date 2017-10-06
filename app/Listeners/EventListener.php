@@ -6,8 +6,8 @@ use Horsefly\Events\SomeEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-//use Illuminate\Contracts\Logging\log;
-use \log;
+use Illuminate\Contracts\Logging\log;
+//use \log;
 
 class EventListener
 {

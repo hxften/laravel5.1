@@ -6,14 +6,9 @@ use Illuminate\Http\Request;
 
 use Horsefly\Http\Requests;
 use Horsefly\Http\Controllers\Controller;
-use Horsefly\Jobs\CreateMessage;  
-use Horsefly\Jobs\SendUserEmail;
-
 use Horsefly\Jobs\SendCms;
-use Horsefly\Events\SomeEvent;
 
-
-class UserController extends Controller
+class CmsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // 服务 
-        //$cms = 'cms22';
-        //\Cms::send("hello cms");  // 关键行
-
-        //队列
-        $title = 'title';
-        //\Queue::push(new SendCms($title));
+        //
     }
 
     /**
@@ -54,32 +43,13 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
-     * 这个方法我们用来模拟发送消息队列.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        // 吕倡 异步队列测试
-        $datas = \DB::table('user')->where('status',1)->get();
-        foreach($datas as $data){
-            // 会自动执行
-            $job = (new SendUserEmail($data->name,$data->email));
-
-            //$job = (new SendUserEmail($data->name,$data->email))->onQueue('email');
-            
-            
-
-            // 这个任务将被分发到默认队列...
-            //$this->dispatch($job);
-
-            // 这个任务将被发送到「email」队列...
-            $this->dispatch($job->onQueue('email'));
-        }
-        return 'SendEmail';
-        //return redirect('/user');
-        
+        //
     }
 
     /**
@@ -90,12 +60,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //http://dev.laravel51.com/user/10/edit
-        //删除方法触发事件
-        $id = 1;
-        event(new SomeEvent($id)); // 关键行
-
-        return 'edit事件';
+        //
     }
 
     /**
@@ -118,6 +83,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        //
+    }
 
+    // 创建队列的job seeder
+    // php artisan make:controller CmsController
+    public function sendCms(Request $request) {
+        $this->dispatch(new SendCms("13800000000", null, null, null));
+        return "ok";
     }
 }
