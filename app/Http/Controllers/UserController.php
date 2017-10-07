@@ -11,7 +11,7 @@ use Horsefly\Jobs\SendUserEmail;
 
 use Horsefly\Jobs\SendCms;
 use Horsefly\Events\SomeEvent;
-
+use Horsefly\Jobs\Job;
 
 class UserController extends Controller
 {
@@ -67,13 +67,10 @@ class UserController extends Controller
             // 会自动执行
             $job = (new SendUserEmail($data->name,$data->email));
 
-            //$job = (new SendUserEmail($data->name,$data->email))->onQueue('email');
-            
-            
-
             // 这个任务将被分发到默认队列...
             //$this->dispatch($job);
 
+            //$job = (new SendUserEmail($data->name,$data->email))->onQueue('email');
             // 这个任务将被发送到「email」队列...
             $this->dispatch($job->onQueue('email'));
         }

@@ -39,7 +39,7 @@ class SendUserEmail extends Job implements SelfHandling, ShouldQueue
      */
     public function handle()
     {
-        //\Log::info($this->name.'邮件发送成功');
+        //\Log::info($this->name.'邮件发送成功');exit;
         // 如果参试大于三次
         if ($this->attempts() > 3) {
             \Log::info($this->name.'邮件参试失败过多');
@@ -47,7 +47,7 @@ class SendUserEmail extends Job implements SelfHandling, ShouldQueue
             // 每次进来休息3秒钟
             sleep(3);
             // 休息10秒钟
-            $this->release(10);
+            //$this->release(10);
             $url = 'http://www.ydma.cn';
             $title = '测试邮件';
             $to = $this->email;
@@ -76,6 +76,7 @@ class SendUserEmail extends Job implements SelfHandling, ShouldQueue
      */
     public function failed()
     {
+
         \Log::error($this->name.'队列任务执行失败'."\n".date('Y-m-d H:i:s'));
     }
 }

@@ -35,5 +35,5 @@ Route::get('event', function()
 
 //创建队列
 Route::resource('/cms','CmsController@sendCms');  
-//队列分发任务
+//测试队列分发任务
 Route::resource('/podcast','PodcastController@store'); 
